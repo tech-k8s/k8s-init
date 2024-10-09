@@ -29,6 +29,9 @@ sysctl --system
 curl "https://raw.githubusercontent.com/tech-k8s/k8s-init/refs/heads/main/config.toml" -o /etc/containerd/config.toml
 systemctl restart containerd
 
+# disable swap
+swapoff -a
+sed -e '/swap/ s/^#*/#/' -i /etc/fstab
 # k8s
 # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
